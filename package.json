@@ -6,9 +6,11 @@
     "express": "^4.16.4",
     "socket.io": "^2.3.0",
     "net": "^1.0.2",
-    "fs": "^0.0.2"
+    "fs": "^0.0.2",
+    "ejs": "^2.7.4",
+    "iconv": "^2.3.5"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   }
 }

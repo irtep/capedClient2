@@ -1,6 +1,8 @@
 dependencies:
+  ejs: 2.7.4
   express: 4.17.1
   fs: 0.0.2
+  iconv: 2.3.5
   net: 1.0.2
   socket.io: 2.3.0
 packages:
@@ -156,6 +158,13 @@ packages:
     dev: false
     resolution:
       integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
+  /ejs/2.7.4:
+    dev: false
+    engines:
+      node: '>=0.10.0'
+    requiresBuild: true
+    resolution:
+      integrity: sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
   /encodeurl/1.0.2:
     dev: false
     engines:
@@ -318,6 +327,16 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==
+  /iconv/2.3.5:
+    dependencies:
+      nan: 2.14.0
+      safer-buffer: 2.1.2
+    dev: false
+    engines:
+      node: '>=0.8.0'
+    requiresBuild: true
+    resolution:
+      integrity: sha512-U5ajDbtDfadp7pvUMC0F2XbkP5vQn9Xrwa6UptePl+cK8EILxapAt3sXers9B3Gxagk+zVjL2ELKuzQvyqOwug==
   /indexof/0.0.1:
     dev: false
     resolution:
@@ -389,6 +408,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
+  /nan/2.14.0:
+    dev: false
+    resolution:
+      integrity: sha512-INOFj37C7k3AfaNTtX8RhsTw7qRy7eLET14cROi9+5HAVbbHuIWUHEauBv5qT4Av2tWasiTY1Jw6puUNqRJXQg==
   /negotiator/0.6.2:
     dev: false
     engines:
@@ -627,7 +650,9 @@ registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
+  ejs: ^2.7.4
   express: ^4.16.4
   fs: ^0.0.2
+  iconv: ^2.3.5
   net: ^1.0.2
   socket.io: ^2.3.0

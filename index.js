@@ -3,13 +3,13 @@ const express = require('express');
 const fs = require('fs');
 const net = require('net');
 const http = require('http').Server(app);
-//const ejs = require('ejs');
+const ejs = require('ejs');
 const io = require('socket.io')(http);
 const port = process.env.PORT || 3000;
 const config = JSON.parse(fs.readFileSync('config/config.json', 'utf-8'));
 const formatter= require('./lib/formatter3'); // 2 original for ejs, 1 own for html
 const alias     = require('./lib/alias');
-//const iconv = require('iconv');
+const iconv = require('iconv');
 const createResponse = (command, data) => {
   return { command: command, data: data }
 }
@@ -32,10 +32,8 @@ https://stackoverflow.com/questions/27155419/convert-iso-8859-1-to-utf-8-javascr
 
 /* With HTML*/
 
-app.use(express.static('frontEnd'));
-
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/frontEnd/index.html');
+  res.sendFile(__dirname + '/index.html');
 });
 
 

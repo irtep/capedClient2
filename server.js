@@ -43,7 +43,10 @@ io.on('connection', (socket) => {
   
     data = data + '\r\n';
     
+    // need to convert from utf-8 to latin1/iso-8859-1
     var iconv = new Iconv('UTF-8', 'ISO-8859-1');
+    
+    // buffer and buffer2 are same, can use whichever
     var buffer = iconv.convert(data);
     var buffer2 = iconv.convert(Buffer.from(data));
     mud.write(buffer);
@@ -54,7 +57,3 @@ io.on('connection', (socket) => {
 http.listen(port, () => {
   console.log('listening on *:' + port);
 });
-
-/*
-ÿù
-*/

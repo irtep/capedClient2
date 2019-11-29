@@ -10,14 +10,11 @@ document.getElementById('cLine').addEventListener("keydown", function (e) {
 
 // check if lots of text and destroy lines, to avoid lag
 function destroyLines() {
-  const msgs = document.getElementById('mudScreen').innerHTML;
+  const msgs = document.getElementById('mudScreen');
   
-  if (msgs.length > 4000) {
+  if (msgs.innerHTML.length > 100000) {
     
-    do {
-      msgs.substring(msgs.lastIndexOf('\n') +1, -1 );
-      
-    } while (msgs.length > 3000);
+    msgs.innerHTML = '';
   }
 }
 
@@ -39,7 +36,7 @@ socket.on('message', (message) => {
   messut.innerHTML = messut.innerHTML += `<li> ${data}`;
     
   // destroy old data to avoid lag:
-  //setInterval( () => { destroyLines(); },1000);
+  setInterval( () => { destroyLines(); },10000);
           
   // scrolling to down
   messut.scrollTop = messut.scrollHeight;

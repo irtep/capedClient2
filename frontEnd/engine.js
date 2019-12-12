@@ -42,3 +42,8 @@ socket.on('message', (message) => {
   messut.scrollTop = messut.scrollHeight;
 });
 
+window.onload = ( () => {
+  
+  // focus on command line:
+  document.getElementById('cLine').focus();
+});

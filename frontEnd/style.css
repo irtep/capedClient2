@@ -1,5 +1,5 @@
 body {
-  background-color: black;
+  background: black;
   color: lightGreen;
 }
 
@@ -11,8 +11,9 @@ body {
   font-family: 'Roboto Mono', monospace;
   font-size: 9.5px;
   white-space: pre-wrap;
-  color: rgb(205,205,205);
-  background-color: black;
+  color: lightGreen;
+  /*color: rgb(205,205,205); */
+  background: linear-gradient(navy, darkblue, black, black, black);
 }
 
 #commandConsole {

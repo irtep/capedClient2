@@ -7,7 +7,6 @@ document.getElementById('cLine').addEventListener("keydown", function (e) {
     sendMessage();
   }
 });
-
 // check if lots of text and destroy lines, to avoid lag
 function destroyLines() {
   const msgs = document.getElementById('mudScreen');
@@ -15,14 +14,12 @@ function destroyLines() {
     msgs.innerHTML = '';
   }
 }
-
 // send message to server
 function sendMessage(){
   const data = document.getElementById('cLine').value;
   socket.emit('command', data);
   document.getElementById('cLine').select();
 }
-
 // Receive messages from server:
 socket.on('message', (message) => {
   const command = message.command;
@@ -34,7 +31,6 @@ socket.on('message', (message) => {
   // scrolling to down
   messut.scrollTop = messut.scrollHeight;
 });
-
 window.onload = ( () => {
   // focus on command line:
   document.getElementById('cLine').focus();

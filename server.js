@@ -39,7 +39,6 @@ io.on('connection', (socket) => {
     mud.write(buffer);
   });
 });
-
 http.listen(port, () => {
   console.log('listening on *:' + port);
 });

@@ -23,6 +23,11 @@ body {
 #cLine {
   width: 80vw;
 }
+.commandButtons {
+  margin: 5px;
+  color: white;
+  background-color: darkGreen;
+}
  /* COLORS*/
 span.bold {
   font-weight: bold;

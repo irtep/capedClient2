@@ -1,5 +1,10 @@
 "use strict";
 const socket = io();
+const commandButtons = document.getElementsByClassName('commandButtons');
+// event listener for command buttons
+for (var i = 0; i < commandButtons.length; i++) {
+  commandButtons[i].addEventListener('click', sendButtonMessage, false);
+}
 
 // event listener for enter:
 document.getElementById('cLine').addEventListener("keydown", function (e) {
@@ -13,6 +18,13 @@ function destroyLines() {
   if (msgs.innerHTML.length > 100000) {
     msgs.innerHTML = '';
   }
+}
+// send message to server by buttons
+function sendButtonMessage(clickedButton) {
+  console.log('value= ', clickedButton.target.value);
+  const data = clickedButton.target.value;
+  socket.emit('command', data);
+  document.getElementById('cLine').select();
 }
 // send message to server
 function sendMessage(){

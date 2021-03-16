@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/frontEnd/index.html');
 });
 io.on('connection', (socket) => {
+  try {
   const mud = net.createConnection(config.port, config.host);
   // iso-8859-1 aka latin1 is what this mud uses.
   mud.setEncoding('latin1');
@@ -38,6 +39,9 @@ io.on('connection', (socket) => {
     var buffer2 = iconv.convert(Buffer.from(data));
     mud.write(buffer);
   });
+} catch (e) {
+  console.log(e);
+}
 });
 http.listen(port, () => {
   console.log('listening on *:' + port);

@@ -5,7 +5,7 @@ const fs = require('fs');
 const net = require('net');
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-const port = 3500;
+const port = 3501;
 const config = JSON.parse(fs.readFileSync('config/config.json', 'utf-8'));
 const formatter= require('./lib/formatter');
 const createResponse = (command, data) => {

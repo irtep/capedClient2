@@ -11,6 +11,7 @@ const formatter= require('./lib/formatter');
 const createResponse = (command, data) => {
   return { command: command, data: data }
 }
+let connected = false;
 // for convert from utf-8 to latin1:
 const Iconv = require('iconv').Iconv;
 const Buffer = require('buffer').Buffer;
@@ -20,14 +21,15 @@ app.get('/', (req, res) => {
 });
 io.on('connection', (socket) => {
   try {
-  const mud = net.createConnection(config.port, config.host);
-  // iso-8859-1 aka latin1 is what this mud uses.
-  mud.setEncoding('latin1');
-  mud.addListener('data', (data) => {
-  // formats colors and weird stuff
-  const formatted = formatter.go(data);
-  // sending to front end
-  socket.emit('message', createResponse('update', formatted));
+    const mud = net.createConnection(config.port, config.host);
+    connected = true;
+    // iso-8859-1 aka latin1 is what this mud uses.
+    mud.setEncoding('latin1');
+    mud.addListener('data', (data) => {
+    // formats colors and weird stuff
+    const formatted = formatter.go(data);
+    // sending to front end
+    socket.emit('message', createResponse('update', formatted));
   });
   // Receive from frontEnd:
   socket.on('command', (data) => {
@@ -37,10 +39,14 @@ io.on('connection', (socket) => {
     // buffer and buffer2 are same, can use whichever
     var buffer = iconv.convert(data);
     var buffer2 = iconv.convert(Buffer.from(data));
-    mud.write(buffer);
+
+    mud.on( 'end', () => {
+      connected = false;
+    });
+    connected? mud.write(buffer) : console.log('disconnected from mud, not sending');
   });
 } catch (e) {
-  console.log(e);
+  console.log('error contacting mud', e);
 }
 });
 http.listen(port, () => {

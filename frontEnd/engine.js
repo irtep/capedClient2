@@ -44,7 +44,7 @@ socket.on('message', (message) => {
   ];
   triggers.forEach( trig => {
     const checkThis = data.includes(trig);
-    if (checkThis) { socket.emit('command', 'lead cercei'); }
+    if (checkThis) { socket.emit('command', 'lead cersei'); }
    });
   /*
     var str = "Hello world, welcome to the universe.";
